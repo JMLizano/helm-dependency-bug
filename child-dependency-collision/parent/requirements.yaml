@@ -1,0 +1,9 @@
+dependencies:
+- name: dep1
+  version: 0.1.0
+  repository: "file://../dep1"
+  condition: dep1.enabled
+- name: dep2
+  version: 0.1.0
+  repository: "file://../dep2"
+  condition: dep1.enabled
