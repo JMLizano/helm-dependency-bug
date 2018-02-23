@@ -1,8 +1,11 @@
 # helm-dependency-bug
-POC to expose the bug on the child charts dependencies management by helm
+
+There are two problems with helm dependency management:
+
+1. Child dependencies management
 
 The problem encountered here is related to how helm manage parameter value passing to childs.
-Ej. 
+
 
 Suppose we have a chart 'parent' that depends on a chart 'dep1' and this one depends on 'dep2'. The requirements files would look something like this:
 
@@ -48,4 +51,8 @@ dep2:
 
 this may cause some problems when working with circular dependencies (Ej. Schema-registry chart is a dependency for Kafka chart and it itself has kafka as a dependency), since this
 could cause some variable name collision.
+
+2. Dependency collision 
+
+An extender explanation of this problem (and a possible solution) can be seen [here](https://github.com/kubernetes/helm/issues/2762)
 
